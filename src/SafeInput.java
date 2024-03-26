@@ -21,24 +21,20 @@ public class SafeInput {
         return retInt;
     }
 
-    public static boolean getYNConfirm(Scanner sc, String prompt){
+    public static boolean getYNConfirm(Scanner pipe, String prompt) {
         boolean isValid = false;
-        boolean retBool = true;
         String retString;
         do {
             System.out.println(prompt + ": ");
-            retString = sc.nextLine().toLowerCase();
-            if(retString.equals("y")){
+            retString = pipe.nextLine().trim().toLowerCase();
+            if (retString.equals("y")) {
                 isValid = true;
-            }else if (retString.equals("n")){
+            } else if (retString.equals("n")) {
                 isValid = true;
-                retBool = false;
-            }else{
-                System.out.println("Please enter [y or n]\n['" + retString + "'] is not correct: ");
             }
 
-        }while(!isValid);
-        return retBool;
+        } while (!isValid);
+        return retString.equals("y");
     }
 
 
